@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div class="col-md-8 offset-md-1">
+	<h2>Top Ten Articles (In No Particular Order)</h2>
+    <ul>
+        {% for entry in entries %}
+            <li>{{ entry.title }}</li>
+            <style>
+				mark { 
+					background-color: yellow;
+					color: black;
+				}
+			</style>
+			<p>Sentiment: <mark>{{ entry.sentiment }}</mark></p>
+        {% endfor %}
+    </ul>
+    
+</div>
+<div class="col-md-8 offset-md-2">
+	<form method="get" action="/search">
+		<input type="text" placeholder="Search.." name="text">
+		<button type="submit"><i class="fa fa-search"></i></button>
+	</form>
+</div>
+{% endblock %}
